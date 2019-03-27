@@ -1,0 +1,59 @@
+{
+    "id": null,//流水id
+    "shipTrip": "1734S",//航次
+    "shipCompany": "SITC",//船公司
+    "memo": null,//备注
+    "status": "2",//状态2 是放箱成功
+    "inDate": "2017-12-22 17:18:13.897",//时间
+     "blno": "SITGSHHPB91848",//提单号
+    "shipAgency": "XHF",
+//船代    "shipName": "SITC TIANJIN  ",
+ //船名   "box": [
+        {
+            "cSize": "20",//箱尺寸
+            "suitcaseAddress":  null,
+//取箱地址            "cNum": null,//箱量
+            "url": null,
+ //设备单pdf           "cType": "GP"
+ //箱型       },
+        {
+            "cSize": "40",
+            "suitcaseAddress": null,
+             "cNum": null,
+            "url": null,
+            "cType": "GP"
+        },
+        {
+            "cSize": "20",
+            "suitcaseAddress": null,
+            "cNum": null,
+            "url":  null,
+            "cType": "TK"
+        },
+        {
+            "cSize": "40",
+            "suitcaseAddress": null,
+            "cNum": null,
+            "url": null,
+            "cType": "OH"
+        },
+         {
+            "cSize": "20",
+            "suitcaseAddress": null,
+            "cNum": null,
+            "url": null,
+            "cType": "HC"
+        }
+    ]
+}
+
+
+JX1_1527833874
+
+
+$hh=Db::name("ShopBusiness")->field("ticket_num")->where('shop_id='.$this->p__id.' AND add_time >='.strtotime(date('Y-m-01')).' AND add_time <'.strtotime(date('Y-m-01', strtotime('+1 month'))))->order("add_time desc")->find();
+			if($hh){
+				$data['ticket_num']=$hh['ticket_num']+1;
+			}else{
+				$data['ticket_num']=date("ym").sprintf("%04d",1);
+			}
